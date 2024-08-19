@@ -46,6 +46,9 @@ parser.add_argument('--mode', type=str, default='median', help='Testing mode [ea
 args = parser.parse_args()
 
 
+DATASET_PATH = os.environ.get('SM_CHANNEL_TRAINING')
+
+
 def ShapeNet55Config():
 
     #######################
@@ -62,7 +65,7 @@ def ShapeNet55Config():
     __C.DATASETS.SHAPENET55                          = edict()
     __C.DATASETS.SHAPENET55.CATEGORY_FILE_PATH       = './datasets/ShapeNet55-34/ShapeNet-55/'
     __C.DATASETS.SHAPENET55.N_POINTS                 = 2048
-    __C.DATASETS.SHAPENET55.COMPLETE_POINTS_PATH     = '<*PATH-TO-YOUR-DATASET*>/ShapeNet55/shapenet_pc/%s'
+    __C.DATASETS.SHAPENET55.COMPLETE_POINTS_PATH     = 'DATASET_PATH/ShapeNet55/shapenet_pc/%s'
 
     #
     # Dataset
